@@ -1,0 +1,16 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #95dada;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 1rem;
+  cursor: pointer;
+  will-change: transform;
+  transition: transform 450ms;
+  text-align: center;
+  &:hover {
+    transition: transform 150ms;
+    transform: translateY(-5px);
+  }
+}
