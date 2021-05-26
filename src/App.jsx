@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CardList from "./components/CardList/CardList.component";
 import styles from "./App.module.scss";
 import Searchbox from "./components/SearchBox/Searchbox.component";
+
 export default class App extends Component {
   constructor() {
     super();
@@ -21,6 +22,10 @@ export default class App extends Component {
     );
   }
 
+  handleChange = (e) => {
+    this.setState({ searchField: e.target.value });
+  };
+
   render() {
     const { monsters, searchField } = this.state;
     const filteredMonsters = monsters.filter((monster) =>
@@ -31,10 +36,7 @@ export default class App extends Component {
     return (
       <div className={styles.app}>
         <h1 className={styles.title}>Monster Rolodex</h1>
-        <Searchbox
-          handleChange={(e) => this.setState({ searchField: e.target.value })}
-          placeholder={""}
-        />
+        <Searchbox handleChange={this.handleChange} placeholder={"Text"} />
         {/* Filtered array of monsters is passed to the component to be re-rendered */}
         <CardList monsters={filteredMonsters} />
       </div>
