@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CardList from "./components/CardList/CardList.component";
-
+import styles from "./App.module.scss";
+import Searchbox from "./components/SearchBox/Searchbox.component";
 export default class App extends Component {
   constructor() {
     super();
@@ -8,6 +9,7 @@ export default class App extends Component {
     this.state = {
       //Monsters prop array
       monsters: [],
+      searchField: "",
     };
   }
 
@@ -20,9 +22,21 @@ export default class App extends Component {
   }
 
   render() {
+    const { monsters, searchField } = this.state;
+    const filteredMonsters = monsters.filter((monster) =>
+      //to lowercase prevents case sensitivity
+      //monster.name -> lowercase then checks the string if includes the searchfield state
+      monster.name.toLowerCase().includes(searchField.toLowerCase())
+    );
     return (
-      <div>
-        <CardList monsters={this.state.monsters} />
+      <div className={styles.app}>
+        <h1 className={styles.title}>Monster Rolodex</h1>
+        <Searchbox
+          handleChange={(e) => this.setState({ searchField: e.target.value })}
+          placeholder={""}
+        />
+        {/* Filtered array of monsters is passed to the component to be re-rendered */}
+        <CardList monsters={filteredMonsters} />
       </div>
     );
   }

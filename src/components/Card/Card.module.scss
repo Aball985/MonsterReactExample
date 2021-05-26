@@ -1,16 +1,28 @@
 .card-container {
   display: flex;
   flex-direction: column;
-  background-color: #95dada;
-  border: 1px solid black;
+  border: 8px solid #fff;
   border-radius: 5px;
   padding: 1rem;
   cursor: pointer;
   will-change: transform;
   transition: transform 450ms;
   text-align: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   &:hover {
     transition: transform 150ms;
     transform: translateY(-5px);
   }
+}
+
+.monster-name {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.monster-email {
+  font-size: 1.3rem;
+  color: rgb(255, 207, 207);
+  font-weight: 300;
 }
